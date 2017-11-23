@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Tìm kiếm trong Blog
+title: Search in Blog
 permalink: /search/
 
 comments: false
-tags: 
-category: 
-sc_project: 
-sc_security: 
+tags:
+category:
+sc_project:
+sc_security:
 
 
 ---
@@ -57,5 +57,3 @@ mark, .mark{
     background-color: #FEFE65;
 }
 </style>
-
-

@@ -10,7 +10,7 @@ tags: NLP
 category: Deep Learning
 sc_project: 11281831
 sc_security: f2dfc7eb
-img: \assets\16_convexity\norm2_surf.png
+img: \assets\NLP_intro\NLP_intro.png
 summary: Introduction to Natural Language Preprocessing
 ---
 
