@@ -1,13 +1,13 @@
 ---
 layout: post
-comments: true 
+comments: true
 scripts:
  - index
 ---
 
 
 {% include pagination.html %}
-<hr> 
+<hr>
 <ul class = "posts">
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
@@ -21,7 +21,7 @@ scripts:
             <span class = "post-date" style="float: right; ">{{ post.date | date: "%b %-d, %Y" }}
             </span>
             <br>
-            {% if post.tags %}    
+            {% if post.tags %}
                 <ul class = "tags">
                     {% for tag in post.tags %}
                         <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
@@ -31,14 +31,14 @@ scripts:
             {{ post.summary }} <a href = "{{ post.url | prepend: site.baseurl }}" sylte = "color: #204081;">Xem tiếp &raquo; </a>
         </div>
     </div>
-    
+
     <div class = "row">
         <div class = "col-xs-12 col-sm-12 hidden-md hidden-lg">
             <a class="post-link" style = "text-align: left; color: #204081; font-weight: bold"  href="{{ post.url | prepend: site.baseurl }}" > {{ post.title }}</a>
             <span class = "post-date" style="float: right; ">{{ post.date | date: "%b %-d, %Y" }}
             </span>
             <br>
-            {% if post.tags %}    
+            {% if post.tags %}
                 <ul class = "tags">
                     {% for tag in post.tags %}
                         <a href="/tags#{{ tag }}" class="tag">{{ tag }}</a>
@@ -71,15 +71,15 @@ scripts:
 
 
 {% include pagination.html %}
-<hr> 
+<hr>
 <div style="text-align:right">
-Total visits: 
+Total visits:
 <!-- Start of StatCounter Code for Default Guide -->
 <script type="text/javascript">
-var sc_project=11312058; 
-var sc_invisible=0; 
-var sc_security="462ef68b"; 
-var sc_text=2; 
+var sc_project=11312058;
+var sc_invisible=0;
+var sc_security="462ef68b";
+var sc_text=2;
 var scJsHost = (("https:" == document.location.protocol) ?
 "https://secure." : "http://www.");
 document.write("<sc"+"ript type='text/javascript' src='" +
