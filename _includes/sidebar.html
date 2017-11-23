@@ -6,17 +6,14 @@
             <img width="100%" style="padding-bottom: 3mm;" src="{{ site.baseurl }}/assets/latex/new_logo92.png" /> </a>
           <!-- <img width="100%" style="padding-bottom: 3mm;" src="{{ site.baseurl }}/assets/latex/new_logo2_rau.png" /> </a> -->
 
-            <br>
-            <a href = "{{ site.baseurl }}/buymeacoffee">
-            <img width="100%" style="padding-bottom: 3mm;" src="{{ site.baseurl }}/images/Buymeacoffee_blue.png" />
 
             <br>
             <a href = "{{ site.baseurl }}/ebook">
             <img width="100%" style="padding-bottom: 3mm;" src="{{ site.baseurl }}/images/ebook_logo.png" />
 
 
-            <!-- <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#074B80', 
-            'A40822MV');kofiwidget2.draw();</script>  --><!-- 
+            <!-- <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#074B80',
+            'A40822MV');kofiwidget2.draw();</script>  --><!--
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_donations">
             <input type="hidden" name="business" value="vuhuutiep@gmail.com">
@@ -51,18 +48,18 @@
           </table> -->
 
           <!-- <nav>
-          
+
             <div class="header">Popular</div>
             <ul>
               <li> (**): > 10k views</li>
               <li> (*) : > 5k views</li>
             </ul>
           </nav> -->
-          
+
 
           {% if page.category %}
           <nav>
-          
+
             <div class="header">Latest by category</div>
             <ul>
               {% for category in site.categories %}
@@ -86,19 +83,19 @@
             </ul>
           </nav>
 
-          
-          
+
+
           <!-- <img style = "transform: scaleX(1); width:100%; margin-left:00px;position: absolute;" src = "/images/mai.jpg"> -->
-         
-         <!--  {% if page.previous.url %} 
+
+         <!--  {% if page.previous.url %}
             <nav>
               <div class="header">Previous by date</div>
               <ul>
                 <li><a style="text-align: left; font-family: 'Roboto Condensed', sans-serif; color: #074B80;" href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
               </ul>
             </nav>
-          {% endif %} 
-          {% if page.next.url %} 
+          {% endif %}
+          {% if page.next.url %}
             <nav>
               <div class="header">Next by date</div>
               <ul>
