@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: About
 permalink: /about/
 sc_project: 11387860
