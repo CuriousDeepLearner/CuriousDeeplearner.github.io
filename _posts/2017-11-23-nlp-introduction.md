@@ -41,8 +41,8 @@ Về cơ bản, các mô hình hiện tại:
 Sự khác nhau cơ bản giữa các mô hình này và với mô hình word2vec mà chúng ta sẽ nghiên cứu trong bài sau là về vấn đề độ phức tạp trong tính toán (*computational complexity*). Việc sử dụng hệ thống kiến trúc quá sâu của các lớp hay quá phức tạp sẽ khiến cho mô hình ngốn nhiều tài nguyên và thời gian hơn đặc biệt trong trường hợp số lượng từ có trong từ điển quá lớn. Đó là lý do chính tại sao mãi đến năm 2013, chúng ta mới nhìn thấy những thành tựu lớn trong mảng NLP khi mà các vi xử lý đã được cải thiện hơn rất nhiều so với trước đây.      
 
 #### Bài toán:    
-Giả sử chúng ta có 1 đoạn text training chứa T từ $w_1, w_2, ..., w_T$ nằm trong 1 từ điển V có độ dài |V|.     
-Mô hình của chúng ta xem xét 1 bối cảnh gồm n từ, biểu diễn mỗi từ đầu vào dưới dạng vector *input embedding* $v_m$ với $d$ chiều, và đầu ra *output embedding* $v_m'$ bằng cách tối ưu hóa hàm mất mát $J_{\{phi}}$ với tham số mô hình là $\phi$.      
+Giả sử chúng ta có 1 đoạn text training chứa T từ \(w_1, w_2, ..., w_T \) nằm trong 1 từ điển \( V \) có độ dài \( |V| \).     
+Mô hình của chúng ta xem xét 1 bối cảnh gồm n từ, biểu diễn mỗi từ đầu vào dưới dạng vector *input embedding* \(v_m\) với \(d\) chiều, và đầu ra *output embedding* \(v_m'\) bằng cách tối ưu hóa hàm mất mát \(J_{\(phi)}\) với tham số mô hình là \( \phi \).      
 
 
 
