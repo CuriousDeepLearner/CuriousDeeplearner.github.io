@@ -27,21 +27,21 @@ Hiểu đơn giản là ngôn ngữ bình thường con người sử dụng là
 
 3. **Dimensional space**: không gian nhiều chiều
 
-4. **computational complexity**: đây là 1 thuật ngữ thường bắt gặp trong ngành Machine learning nói chung và Deep Learning nói riêng, để chỉ độ phức tạp tính toán của mô hình. Mô hình càng phức tạp thì càng mất nhiều thời gian và tài nguyên để chạy.
+4. **Computational complexity**: đây là 1 thuật ngữ thường bắt gặp trong ngành Machine learning nói chung và Deep Learning nói riêng, để chỉ độ phức tạp tính toán của mô hình. Mô hình càng phức tạp thì càng mất nhiều thời gian và tài nguyên để chạy.
 
 ### Lịch sử của word embeddings
 - Kể từ những năm 90, mô hình không gian vector đã được sử dụng trong việc phân phối nghĩa của từ. Nhiều mô hình word embeddings đã được phát triển, nổi bật trong đó là **Latent Semantic Analysis (LSA)** và **Latent Dirichlet Allocation(LDA)**
 
 ### Các mô hình word embeddings
 Về cơ bản, các mô hình hiện tại:     
-+> sử dụng **từ** trong **từ điển** như là **đầu vào**     
-+> biến chúng thành những vectors trong không gian với chiều thấp hơn.      
-+> sau đó thay đổi (fine-tune) weights, các tham số thông qua **back-propagation**, để tạo thành **Embedding Layer (Lớp nhúng)**      
+* sử dụng **từ** trong **từ điển** như là **đầu vào**     
+* biến chúng thành những vectors trong không gian với chiều thấp hơn.      
+* sau đó thay đổi (fine-tune) weights, các tham số thông qua **back-propagation**, để tạo thành **Embedding Layer (Lớp nhúng)**      
 
 Sự khác nhau cơ bản giữa các mô hình này và với mô hình word2vec mà chúng ta sẽ nghiên cứu trong bài sau là về vấn đề độ phức tạp trong tính toán (*computational complexity*). Việc sử dụng hệ thống kiến trúc quá sâu của các lớp hay quá phức tạp sẽ khiến cho mô hình ngốn nhiều tài nguyên và thời gian hơn đặc biệt trong trường hợp số lượng từ có trong từ điển quá lớn. Đó là lý do chính tại sao mãi đến năm 2013, chúng ta mới nhìn thấy những thành tựu lớn trong mảng NLP khi mà các vi xử lý đã được cải thiện hơn rất nhiều so với trước đây.      
 
 #### Bài toán:    
-Giả sử chúng ta có 1 đoạn text training chứa T từ \(w_1, w_2, ..., w_T \) nằm trong 1 từ điển \( V \) có độ dài \( |V| \).     
+Giả sử chúng ta có 1 đoạn text training chứa T từ \(w_1, w_2, ..., w_T\) nằm trong 1 từ điển \(V\) có độ dài \(|V|\).     
 Mô hình của chúng ta xem xét 1 bối cảnh gồm n từ, biểu diễn mỗi từ đầu vào dưới dạng vector *input embedding* \(v_m\) với \(d\) chiều, và đầu ra *output embedding* \(v_m'\) bằng cách tối ưu hóa hàm mất mát \(J_{\(phi)}\) với tham số mô hình là \( \phi \).      
 
 
