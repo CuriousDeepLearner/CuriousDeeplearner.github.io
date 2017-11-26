@@ -15,6 +15,20 @@ summary: Tổng quan về Natural Language Preprocessing (NLP)
 ---
 *Note: trong blog này tôi vẫn sẽ giữ nguyên các thuật ngữ chuyên ngành tiếng anh (bên cạnh có dịch sơ lược sang tiếng việt). Tôi cũng khuyến khích bạn đọc nên sử dụng các thuật ngữ này khi nói hay làm việc, để có sự thống nhất đồng bộ và tránh những nhầm lẫn không đáng có. Ví dụ: bạn thường nên dùng thuật ngữ "Machine Learning" hơn là sử dụng "máy học"*
 
+**Table of Contents**
+
+[TOCM]
+
+[TOC]
+
+#H1 header
+##H2 header
+###H3 header
+####H4 header
+#####H5 header
+######H6 header
+
+
 **Natural Language Preprocessing (NLP)** (dịch sang tiếng việt là **"Xử lý ngôn ngữ tự nhiên"**) là một mảng đang nhận được rất nhiều sự chú ý trong giới khoa học về Machine Learning (Máy học) gần đây, đặc biệt là từ năm 2012 với sự ra đời của **word2vec**.  
 
 ### Ứng dụng của NLP trong thực tế:
@@ -41,8 +55,8 @@ Về cơ bản, các mô hình hiện tại:
 Sự khác nhau cơ bản giữa các mô hình này và với mô hình word2vec mà chúng ta sẽ nghiên cứu trong bài sau là về vấn đề độ phức tạp trong tính toán (*computational complexity*). Việc sử dụng hệ thống kiến trúc quá sâu của các lớp hay quá phức tạp sẽ khiến cho mô hình ngốn nhiều tài nguyên và thời gian hơn đặc biệt trong trường hợp số lượng từ có trong từ điển quá lớn. Đó là lý do chính tại sao mãi đến năm 2013, chúng ta mới nhìn thấy những thành tựu lớn trong mảng NLP khi mà các vi xử lý đã được cải thiện hơn rất nhiều so với trước đây.      
 
 #### Bài toán:    
-Giả sử chúng ta có 1 đoạn text training chứa T từ \(w_1, w_2, ..., w_T\) nằm trong 1 từ điển \(V\) có độ dài \(|V|\).     
-Mô hình của chúng ta xem xét 1 bối cảnh gồm n từ, biểu diễn mỗi từ đầu vào dưới dạng vector *input embedding* \(v_m\) với \(d\) chiều, và đầu ra *output embedding* \(v_m'\) bằng cách tối ưu hóa hàm mất mát \(J_{\(phi)}\) với tham số mô hình là \( \phi \).      
+Giả sử chúng ta có 1 đoạn text training chứa T từ $$w_1, w_2, ..., w_T$$ nằm trong 1 từ điển \\(V\\) có độ dài \\(|V|\\).     
+Mô hình của chúng ta xem xét 1 bối cảnh gồm n từ, biểu diễn mỗi từ đầu vào dưới dạng vector *input embedding* \\(v_m\\) với \\(d\\) chiều, và đầu ra *output embedding* \\(v_m'\\) bằng cách tối ưu hóa hàm mất mát \\(J_{\(phi)}\\) với tham số mô hình là \\( \phi \\).      
 
 
 
