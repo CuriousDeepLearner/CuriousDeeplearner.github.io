@@ -56,9 +56,14 @@ Sự khác nhau cơ bản giữa các mô hình này và với mô hình word2ve
 
 #### Bài toán:    
 Giả sử chúng ta có 1 đoạn text training chứa T từ $$w_1, w_2, ..., w_T$$ nằm trong 1 từ điển \\(V\\) có độ dài \\(|V|\\).     
-Mô hình của chúng ta xem xét 1 bối cảnh gồm n từ, biểu diễn mỗi từ đầu vào dưới dạng vector *input embedding* \\(v_m\\) với \\(d\\) chiều, và đầu ra *output embedding* \\(v_m'\\) bằng cách tối ưu hóa hàm mất mát \\(J_{\(phi)}\\) với tham số mô hình là \\( \phi \\).      
+Mô hình của chúng ta xem xét 1 bối cảnh gồm n từ, biểu diễn mỗi từ đầu vào dưới dạng vector *input embedding* \\(v_m\\) với \\(d\\) chiều, và đầu ra *output embedding* \\(v_m'\\) bằng cách tối ưu hóa hàm mất mát \\(J_{\phi}\\) với tham số mô hình là \\( \phi \\).      
 
+#### Language Modelling (mô hình ngôn ngữ)
+Trước khi đi vào các mô hình về word embeddings, thì chúng ta cùng đảo qua về Language Models - mô hình thường được sử dụng trước đây trong việc giải quyết các bài toán về nhận dạng ngôn ngữ, phiên dịch...     
 
+Đây là mô hình dựa trên phân phối xác suất của 1 chuỗi các từ.
+
+Bạn đọc có thể tìm hiểu sâu hơn về mô hình này tại [đây](https://en.wikipedia.org/wiki/Language_model) hoặc [course](http://web.stanford.edu/class/cs124/)
 
 
 This post is credited to the course: [CS224n: Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)

@@ -1,17 +1,17 @@
 ---
 #layout: post
-comments: true
-title:  "Bài 16: Convex sets và convex functions"
-title2:  "16. Convex sets và convex functions"
-date:   2017-03-12 15:22:00
-permalink: 2017/03/12/convexity/
-mathjax: true
-tags: Convex Optimization
-category: Optimization
-sc_project: 11281831
-sc_security: f2dfc7eb
-img: \assets\16_convexity\norm2_surf.png
-summary: Giới thiệu về tập hợp lồi và hàm số lồi trong Toán Tối Ưu.
+#comments: true
+#title:  "Bài 16: Convex sets và convex functions"
+#title2:  "16. Convex sets và convex functions"
+#date:   2017-03-12 15:22:00
+#permalink: 2017/03/12/convexity/
+#mathjax: true
+#tags: Convex Optimization
+#category: Optimization
+#sc_project: 11281831
+#sc_security: f2dfc7eb
+#img: \assets\16_convexity\norm2_surf.png
+#summary: Giới thiệu về tập hợp lồi và hàm số lồi trong Toán Tối Ưu.
 ---
 
 Bài này có khá nhiều khái niệm mới, mong bạn đọc thông cảm khi tôi sử dụng các khái niệm này ở cả tiếng Anh và tiếng Việt.
