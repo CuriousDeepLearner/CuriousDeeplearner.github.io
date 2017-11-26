@@ -17,16 +17,6 @@ summary: Tổng quan về Natural Language Preprocessing (NLP)
 
 **Table of Contents**
 
-[TOCM]
-
-[TOC]
-
-#H1 header
-##H2 header
-###H3 header
-####H4 header
-#####H5 header
-######H6 header
 
 
 **Natural Language Preprocessing (NLP)** (dịch sang tiếng việt là **"Xử lý ngôn ngữ tự nhiên"**) là một mảng đang nhận được rất nhiều sự chú ý trong giới khoa học về Machine Learning (Máy học) gần đây, đặc biệt là từ năm 2012 với sự ra đời của **word2vec**.  
