@@ -19,9 +19,9 @@ Trước khi đi vào các mô hình về word embeddings, thì chúng ta cùng 
 Đây là mô hình phân bố xác suất trên các tập văn bản. Cụ thể nó cho biết xác suất 1 câu (1 cụm từ hay 1 từ) trong bộ dữ liệu mẫu là bao nhiêu. Tức là, cung cấp thông tin về phân bố xác suất tiền nghiệm (prior distribution) \\(p(x_1, x_2,...x_n)\\) để xem xét 1 câu gồm 1 chuỗi các **từ đầu vào** có phù hợp hay không.    
 Lấy ví dụ: sau khi thực hiện Language Modelling ta sẽ có     
 
-$$ p(\text{học xử lý ngôn ngữ tự nhiên thật vui}) = 0,001 > p(\text{tự lý xử nhiên vui thật ngôn ngữ học}) = 0  $$  
+$$ p(\text{học xử lý ngôn ngữ tự nhiên}) = 0,001 > p(\text{tự lý xử nhiên ngôn học ngữ}) = 0  $$  
 
-Nhờ vậy chúng ta sẽ xác định được câu "học xử lý ngôn ngữ tự nhiên thật vui" sẽ phù hợp hơn với ngôn ngữ tiếng viêt hơn câu "tự lý xử nhiên vui thật ngôn ngữ học".
+Nhờ vậy chúng ta sẽ xác định được câu "học xử lý ngôn ngữ tự nhiên" sẽ phù hợp hơn với ngôn ngữ tiếng viêt hơn câu "tự lý xử nhiên ngôn học ngữ".
 
 #### Bài toán:    
 Giả sử chúng ta có 1 tập ngữ liệu (corpus) tiếng việt thu thập được từ các trang web và 1 từ điển \\( V \\). Ở đây, ngữ liệu là tập dữ liệu gồm các câu (sentence) cho một ngôn ngữ xác đinh, ở đây là tiếng việt; từ điển \\( V \\) là 1 bộ từ vựng gồm tập hợp hữu hạn các từ có độ dài là \\(|V|\\).      
@@ -34,11 +34,23 @@ Cách đầu tiên chúng ta có thể nghĩ đến chính là sử dụng việ
 Trình bày toán học:     
 Ký hiệu \\( V^{+}\\) là tập hợp tất cả các câu khởi tạo từ bộ từ vựng \\(V\\).     
 Một câu bao gồm n từ có dạng \\(x_1x_2x_3...x_n\\)     
-với \\( n >= 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt \\( STOP \not \in V \\)
+với \\( n \ge 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt \\( STOP \not \in V \\)     
+Một mô hình gồm tập hữu hạn từ vựng \\(V\\) và 1 hàm xác suất \\(p(x_1, x_2,...x_n)\\) sao cho:     
+$$\forall <x_1...x_n> \in V^+, p(x_1,x_2,...,x_n) \ge 0$$      
+$$\sum_{<x_1...x_n> \in V^+} \text{    } p(x_1,x_2,...,x_n) = 1$$
+
+Như vậy \\(p(x_1, x_2,...x_n\\) là phân bố xác suất của các câu trong tập \\(V^+\\)
+
+Một cách đơn giản ta có thể tính xác suất trên như sau:    
+
+$$p(x_1...x_n) = \frac{c(x_1...x_n)}{N} $$
+
+Với \\(c(x_1...x_n)\\) (count) là số lần xuất hiện của câu \\(x_1...x_n\\) trong ngữ liệu, và \\(N\\) là số lượng các câu trong ngữ liệu huấn luyện.
+
 
 Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế bộ từ điển có thể bao gồm hàng nghìn thậm chí trăm ngàn từ):    
 
- $$ V = \{tôi, là, Hùng, không, thích, hành, và, tỏi \}$$
+ $$ V = \text{\{tôi, là, Hùng, không, thích, hành, và, tỏi\}}$$
 
 ### 2.Mô hình ngôn ngữ N-gram     
 #### 2.1 Một số khái niệm
