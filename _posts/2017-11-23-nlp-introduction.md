@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title:  "Tổng quan về Natural Language Preprocessing (NLP)"
-title2:  "1. Tổng quan về Natural Language Preprocessing (NLP)"
+title:  "Tổng quan về Natural Language Preprocessing (NLP - xử lý ngôn ngữ tự nhiên)"
+title2:  "1. Tổng quan về Natural Language Preprocessing (NLP - xử lý ngôn ngữ tự nhiên)"
 date:   2017-11-23 15:22:00
 permalink: 2017/11/23/nlp/
 mathjax: true
@@ -11,7 +11,7 @@ category: NLP
 sc_project: 11281831
 sc_security: f2dfc7eb
 img: \assets\NLP_intro\NLP_intro.png
-summary: Tổng quan về Natural Language Preprocessing (NLP)
+summary: Tổng quan về Natural Language Processing (NLP - Xử lý ngôn ngữ tự nhiên )
 ---
 *Note: trong blog này tôi vẫn sẽ giữ nguyên các thuật ngữ chuyên ngành tiếng anh (bên cạnh có dịch sơ lược sang tiếng việt). Tôi cũng khuyến khích bạn đọc nên sử dụng các thuật ngữ này khi nói hay làm việc, để có sự thống nhất đồng bộ và tránh những nhầm lẫn không đáng có. Ví dụ: bạn thường nên dùng thuật ngữ "Machine Learning" hơn là sử dụng "máy học"*
 

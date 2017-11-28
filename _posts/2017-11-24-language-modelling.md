@@ -10,7 +10,7 @@ tags: NLP
 category: NLP, Language_model
 sc_project: 11281831
 sc_security: f2dfc7eb
-img: \assets\2-language-model\Language-Model.png
+img: \assets\2-language-model\Language-Models.png
 summary: Language Model (Mô hình ngôn ngữ) là cở sở của rất nhiều mô hình xử lý ngôn ngữ về sau.
 ---
 
@@ -20,7 +20,7 @@ Trước khi đi vào các mô hình về word embeddings, thì chúng ta cùng 
 Lấy ví dụ: sau khi thực hiện Language Modelling ta sẽ có     
 \\[
 \begin{eqnarray}
-\\(p(học xử lý ngôn ngữ tự nhiên thật vui) > p(tự lý xử nhiên vui thật ngôn ngữ học) \\)  
+\\(p(\text(học xử lý ngôn ngữ tự nhiên thật vui)) > p(\text(tự lý xử nhiên vui thật ngôn ngữ học)) \\)  
 \end{eqnarray}
 \\]
 Nhờ vậy chúng ta sẽ xác định được câu "học xử lý ngôn ngữ tự nhiên thật vui" sẽ phù hợp hơn với ngôn ngữ tiếng viêt hơn câu "tự lý xử nhiên vui thật ngôn ngữ học".
@@ -41,6 +41,6 @@ với \\( n >= 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\)
 Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế bộ từ điển có thể bao gồm hàng nghìn thậm chí trăm ngàn từ):    
 \\[
 \begin{eqnarray}
-\\( V = {tôi, là, Hùng, không, thích, hành, và, tỏi })
+ V = {tôi, là, Hùng, không, thích, hành, và, tỏi }
 \end{eqnarray}
 \\]

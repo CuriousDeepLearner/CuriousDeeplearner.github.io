@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "NLP Approximating Softmax"
-title2:  "1. NLP Approximating Softmax"
+title2:  "3. NLP Approximating Softmax"
 date:   2017-11-25 15:22:00
 permalink: 2017/11/25/nlp/
 mathjax: true
