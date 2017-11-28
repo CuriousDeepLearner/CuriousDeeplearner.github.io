@@ -39,19 +39,18 @@ với \\( n \ge 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu �
 Một mô hình gồm tập hữu hạn từ vựng \\(V\\) và 1 hàm xác suất \\(p(x_1, x_2,...x_n)\\) sao cho:     
 
 \[
-\begin{eqnarray}
-p(x_1,x_2,...,x_n) \ge 0 ~~ x_i \in V^+ , i = 1,2,...n \\\        
+p(x_1,x_2,...,x_n) \ge 0 ~~ x_i \in V^+ , i = 1,2,...n \        
 \sum_{<x_1...x_n> \in V^+} p(x_1,x_2,...,x_n) = 1
-\end{eqnarray}
 \]
 
 Như vậy \\(p(x_1, x_2,...x_n)\\) là phân bố xác suất của các câu trong tập \\(V^+\\)
+
 
 Một cách đơn giản ta có thể tính xác suất trên như sau:    
 
 $$p(x_1...x_n) = \frac{c(x_1...x_n)}{N} $$
 
-Với \\(c(x_1...x_n)\\) (count) là số lần xuất hiện của câu \\(x_1...x_n\\) trong ngữ liệu, và \\(N\\) là số lượng các câu trong ngữ liệu huấn luyện.
+Với $c(x_1...x_n)$ (count) là số lần xuất hiện của câu \\(x_1...x_n\\) trong ngữ liệu, và \\(N\\) là số lượng các câu trong ngữ liệu huấn luyện.
 
 Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế bộ từ điển có thể bao gồm hàng nghìn thậm chí trăm ngàn từ):    
 
