@@ -23,12 +23,13 @@ $$ p(\text{học xử lý ngôn ngữ tự nhiên}) = 0,001 > p(\text{tự lý x
 
 Nhờ vậy chúng ta sẽ xác định được câu "học xử lý ngôn ngữ tự nhiên" sẽ phù hợp hơn với ngôn ngữ tiếng viêt hơn câu "tự lý xử nhiên ngôn học ngữ".
 
-#### Bài toán:    
+### Bài toán:    
 Giả sử chúng ta có 1 tập ngữ liệu (corpus) tiếng việt thu thập được từ các trang web và 1 từ điển \\( V \\). Ở đây, ngữ liệu là tập dữ liệu gồm các câu (sentence) cho một ngôn ngữ xác đinh, ở đây là tiếng việt; từ điển \\( V \\) là 1 bộ từ vựng gồm tập hợp hữu hạn các từ có độ dài là \\(|V|\\).      
 Xem xét 1 câu A bất kỳ gồm n từ bao gồm 1 chuỗi các từ \\( x_1, x_2,...x_n \\) nằm trong bộ từ điển \\( V \\) ban đầu
 
 Mục tiêu của chúng ta là xây dựng 1 mô hình có khả năng tính toán xác suất của câu này thuộc về ngôn ngữ mà chúng ta đang xem xét \\(p(x_1, x_2,...x_n)\\)
 
+##### 1. Cách tiếp cận đơn giản
 Cách đầu tiên chúng ta có thể nghĩ đến chính là sử dụng việc đếm. Đơn giản bằng cách đếm số lần câu A của chúng ta xuất hiện bao nhiêu lần trong ngữ liệu (corpus) chia cho số lượng câu có trong tập ngữ liệu huẩn luyện.
 
 Trình bày toán học:     
@@ -36,10 +37,10 @@ Ký hiệu \\( V^{+}\\) là tập hợp tất cả các câu khởi tạo từ b
 Một câu bao gồm n từ có dạng \\(x_1x_2x_3...x_n\\)     
 với \\( n \ge 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt \\( STOP \not \in V \\)     
 Một mô hình gồm tập hữu hạn từ vựng \\(V\\) và 1 hàm xác suất \\(p(x_1, x_2,...x_n)\\) sao cho:     
-$$\forall <x_1...x_n> \in V^+, p(x_1,x_2,...,x_n) \ge 0$$      
-$$\sum_{<x_1...x_n> \in V^+} \text{    } p(x_1,x_2,...,x_n) = 1$$
+$$ p(x_1,x_2,...,x_n) \ge 0 \quad x_i \in V^+ , i = 1,2,...n $$      
+$$\sum_{<x_1...x_n> \in V^+} p(x_1,x_2,...,x_n) = 1$$
 
-Như vậy \\(p(x_1, x_2,...x_n\\) là phân bố xác suất của các câu trong tập \\(V^+\\)
+Như vậy \\(p(x_1, x_2,...x_n)\\) là phân bố xác suất của các câu trong tập \\(V^+\\)
 
 Một cách đơn giản ta có thể tính xác suất trên như sau:    
 
@@ -47,10 +48,9 @@ $$p(x_1...x_n) = \frac{c(x_1...x_n)}{N} $$
 
 Với \\(c(x_1...x_n)\\) (count) là số lần xuất hiện của câu \\(x_1...x_n\\) trong ngữ liệu, và \\(N\\) là số lượng các câu trong ngữ liệu huấn luyện.
 
-
 Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế bộ từ điển có thể bao gồm hàng nghìn thậm chí trăm ngàn từ):    
 
- $$ V = \text{\{tôi, là, Hùng, không, thích, hành, và, tỏi\}}$$
+ $$ V = \text{\{tôi, là, Tú, không, thích, hành, và, tỏi\}}$$
 
 ### 2.Mô hình ngôn ngữ N-gram     
 #### 2.1 Một số khái niệm
