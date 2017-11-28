@@ -29,7 +29,7 @@ Xem xét 1 câu A bất kỳ gồm n từ bao gồm 1 chuỗi các từ \\( x_1,
 
 Mục tiêu của chúng ta là xây dựng 1 mô hình có khả năng tính toán xác suất của câu này thuộc về ngôn ngữ mà chúng ta đang xem xét \\(p(x_1, x_2,...x_n)\\)
 
-##### 1. Cách tiếp cận đơn giản
+### 1. Cách tiếp cận đơn giản
 Cách đầu tiên chúng ta có thể nghĩ đến chính là sử dụng việc đếm. Đơn giản bằng cách đếm số lần câu A của chúng ta xuất hiện bao nhiêu lần trong ngữ liệu (corpus) chia cho số lượng câu có trong tập ngữ liệu huẩn luyện.
 
 Trình bày toán học:     
@@ -37,9 +37,12 @@ Ký hiệu \\( V^{+}\\) là tập hợp tất cả các câu khởi tạo từ b
 Một câu bao gồm n từ có dạng \\(x_1x_2x_3...x_n\\)     
 với \\( n \ge 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt \\( STOP \not \in V \\)     
 Một mô hình gồm tập hữu hạn từ vựng \\(V\\) và 1 hàm xác suất \\(p(x_1, x_2,...x_n)\\) sao cho:     
-$$ p(x_1,x_2,...,x_n) \ge 0 \quad x_i \in V^+ , i = 1,2,...n $$      
-$$\sum_{<x_1...x_n> \in V^+} p(x_1,x_2,...,x_n) = 1$$
-
+\\[
+\begin{eqnarray}
+p(x_1,x_2,...,x_n) \ge 0 ~~ x_i \in V^+ , i = 1,2,...n         
+\sum_{<x_1...x_n> \in V^+} p(x_1,x_2,...,x_n) = 1
+\end{eqnarray}
+\\]
 Như vậy \\(p(x_1, x_2,...x_n)\\) là phân bố xác suất của các câu trong tập \\(V^+\\)
 
 Một cách đơn giản ta có thể tính xác suất trên như sau:    
