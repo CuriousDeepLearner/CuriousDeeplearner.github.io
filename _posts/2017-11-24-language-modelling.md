@@ -38,13 +38,10 @@ Một câu bao gồm n từ có dạng \\(x_1x_2x_3...x_n\\)
 với \\( n \ge 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt \\( STOP \not \in V \\)     
 Một mô hình gồm tập hữu hạn từ vựng \\(V\\) và 1 hàm xác suất \\(p(x_1, x_2,...x_n)\\) sao cho:     
 
-\[
-p(x_1,x_2,...,x_n) \ge 0 ~~ x_i \in V^+ , i = 1,2,...n \        
-\sum_{<x_1...x_n> \in V^+} p(x_1,x_2,...,x_n) = 1
-\]
+$$p(x_1,x_2,...,x_n) \ge  0 ~~ x_i \in V^+ , i = 1,2,...n$$ \        
+$$\sum_{<x_1...x_n> \in V^+} p(x_1,x_2,...,x_n) = 1$$
 
 Như vậy \\(p(x_1, x_2,...x_n)\\) là phân bố xác suất của các câu trong tập \\(V^+\\)
-
 
 Một cách đơn giản ta có thể tính xác suất trên như sau:    
 
@@ -52,9 +49,27 @@ $$p(x_1...x_n) = \frac{c(x_1...x_n)}{N} $$
 
 Với $c(x_1...x_n)$ (count) là số lần xuất hiện của câu \\(x_1...x_n\\) trong ngữ liệu, và \\(N\\) là số lượng các câu trong ngữ liệu huấn luyện.
 
+**Nhược điểm:** Điểm trừ lớn nhất của phương pháp này chính là không có khả năng tổng quát hóa (generalisation). Lấy ví dụ nếu 1 câu mới không có trong tập ngữ liệu corpus thì tử số của xác suất sẽ bằng 0, trong khi điều ta mong muốn là có thể dự đoán được bất kỳ câu mới nào. Chúng ta sẽ cùng xem xét những phương pháp tiếp theo để khắc phục nhược điểm này
+
 Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế bộ từ điển có thể bao gồm hàng nghìn thậm chí trăm ngàn từ):    
 
  $$ V = \text{\{tôi, là, Tú, không, thích, hành, và, tỏi\}}$$
+
+### 2. Markov Models
+Ý tưởng chính của mô hình Markov là giả định xác suất của đối tượng (câu, từ hoặc cụm từ đang nghiên cứu) chỉ phụ thuộc vào \\(k \(k \fe n- 1\)\\) đối tượng trước đó của một chuỗi.
+
+Xét một chuỗi các biến ngẫu nhiên \\(X_1, X_2, ..., X_n\\). Mỗi biến ngẫu nhiên này có thể có các giá trị thuộc tập hữu hạn V. Mục tiêu của chúng ta là mô hình hoá xác suất của một chuỗi bất kỳ \\(x_1x_2...x_n\\), trong đó \\(n \ge 1\\) và \\(x_i \in V\\) sao cho \\(i=1,...,n\\) như sau:
+
+$$P(X_1=x_1, X_2=x_2,...,X_n=x_n)$$
+
+Ở đây chúng ta cần sự trợ giúp của 1 công cụ rất nổi tiếng **"chain rule" hay công thức Bayes**: \\(P(AB) = P(B|A) * P(A)\\)     
+Từ đó ta có công thức sau:
+$$     
+P(X_1=x_1, X_2=x_2,..., X_n=x_n)
+= P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) (1.1)
+= P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_{i-1}=x_{i-1}) (1.2)
+$$
+
 
 ### 2.Mô hình ngôn ngữ N-gram     
 #### 2.1 Một số khái niệm
