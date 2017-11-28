@@ -18,11 +18,9 @@ Trước khi đi vào các mô hình về word embeddings, thì chúng ta cùng 
 
 Đây là mô hình phân bố xác suất trên các tập văn bản. Cụ thể nó cho biết xác suất 1 câu (1 cụm từ hay 1 từ) trong bộ dữ liệu mẫu là bao nhiêu. Tức là, cung cấp thông tin về phân bố xác suất tiền nghiệm (prior distribution) \\(p(x_1, x_2,...x_n)\\) để xem xét 1 câu gồm 1 chuỗi các **từ đầu vào** có phù hợp hay không.    
 Lấy ví dụ: sau khi thực hiện Language Modelling ta sẽ có     
-\\[
-\begin{eqnarray}
-\\(p(\textbt(học xử lý ngôn ngữ tự nhiên thật vui)) = 0,001 > p(\textbt(tự lý xử nhiên vui thật ngôn ngữ học)) = 0 \\)  
-\end{eqnarray}
-\\]
+
+$$ p(\text{học xử lý ngôn ngữ tự nhiên thật vui}) = 0,001 > p(\text{tự lý xử nhiên vui thật ngôn ngữ học}) = 0  $$  
+
 Nhờ vậy chúng ta sẽ xác định được câu "học xử lý ngôn ngữ tự nhiên thật vui" sẽ phù hợp hơn với ngôn ngữ tiếng viêt hơn câu "tự lý xử nhiên vui thật ngôn ngữ học".
 
 #### Bài toán:    
@@ -36,7 +34,7 @@ Cách đầu tiên chúng ta có thể nghĩ đến chính là sử dụng việ
 Trình bày toán học:     
 Ký hiệu \\( V^{+}\\) là tập hợp tất cả các câu khởi tạo từ bộ từ vựng \\(V\\).     
 Một câu bao gồm n từ có dạng \\(x_1x_2x_3...x_n\\)     
-với \\( n >= 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt $STOP \notin V$
+với \\( n >= 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt \\( STOP \not \in V \\)
 
 Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế bộ từ điển có thể bao gồm hàng nghìn thậm chí trăm ngàn từ):    
 
