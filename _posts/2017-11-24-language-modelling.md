@@ -14,13 +14,13 @@ img: \assets\2-language-model\Language-Models.png
 summary: Language Model (Mô hình ngôn ngữ) là cở sở của rất nhiều mô hình xử lý ngôn ngữ về sau.
 ---
 
-Trước khi đi vào các mô hình về word embeddings, thì chúng ta cùng đảo qua về Language Models - mô hình thường được sử dụng trước đây trong việc giải quyết các bài toán về nhận dạng tiếng nói (speech recognition), phiên dịch tự động (machine translation)... Việc hiểu được mô hình này sẽ giúp các bạn có những cơ sở kiến thức cơ bản về các mô hình phức tạp về sau như Hidden Markov Model, hay Long short-term memory (LSTM)
+Trước khi đi vào các mô hình về word embeddings, thì chúng ta cùng đảo qua về Language Models (mô hình ngôn ngữ) - mô hình thường được sử dụng trước đây trong việc giải quyết các bài toán về nhận dạng tiếng nói (speech recognition), phiên dịch tự động (machine translation)... Việc hiểu được mô hình này sẽ giúp các bạn có những cơ sở kiến thức cơ bản về các mô hình phức tạp về sau như Hidden Markov Model, hay Long short-term memory (LSTM)
 
-Đây là mô hình cung cấp thông tin về phân bố xác suất tiền nghiệm (prior distribution) \\(p(x_1, x_2,...x_n)\\) để xem xét 1 câu gồm 1 chuỗi các **từ đầu vào** có phù hợp hay không.    
+Đây là mô hình phân bố xác suất trên các tập văn bản. Cụ thể nó cho biết xác suất 1 câu (1 cụm từ hay 1 từ) trong bộ dữ liệu mẫu là bao nhiêu. Tức là, cung cấp thông tin về phân bố xác suất tiền nghiệm (prior distribution) \\(p(x_1, x_2,...x_n)\\) để xem xét 1 câu gồm 1 chuỗi các **từ đầu vào** có phù hợp hay không.    
 Lấy ví dụ: sau khi thực hiện Language Modelling ta sẽ có     
 \\[
 \begin{eqnarray}
-\\(p(\text(học xử lý ngôn ngữ tự nhiên thật vui)) > p(\text(tự lý xử nhiên vui thật ngôn ngữ học)) \\)  
+\\(p(\textbt(học xử lý ngôn ngữ tự nhiên thật vui)) = 0,001 > p(\textbt(tự lý xử nhiên vui thật ngôn ngữ học)) = 0 \\)  
 \end{eqnarray}
 \\]
 Nhờ vậy chúng ta sẽ xác định được câu "học xử lý ngôn ngữ tự nhiên thật vui" sẽ phù hợp hơn với ngôn ngữ tiếng viêt hơn câu "tự lý xử nhiên vui thật ngôn ngữ học".
@@ -36,11 +36,18 @@ Cách đầu tiên chúng ta có thể nghĩ đến chính là sử dụng việ
 Trình bày toán học:     
 Ký hiệu \\( V^{+}\\) là tập hợp tất cả các câu khởi tạo từ bộ từ vựng \\(V\\).     
 Một câu bao gồm n từ có dạng \\(x_1x_2x_3...x_n\\)     
-với \\( n >= 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\)
+với \\( n >= 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt $STOP \notin V$
 
 Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế bộ từ điển có thể bao gồm hàng nghìn thậm chí trăm ngàn từ):    
-\\[
-\begin{eqnarray}
- V = {tôi, là, Hùng, không, thích, hành, và, tỏi }
-\end{eqnarray}
-\\]
+
+ $$ V = \{tôi, là, Hùng, không, thích, hành, và, tỏi \}$$
+
+### 2.Mô hình ngôn ngữ N-gram     
+#### 2.1 Một số khái niệm
+**Ngữ liệu**
+Ngữ liệu (corpus) là 1 dữ liệu tập hợp các văn bản, ngôn ngữ đã được số hóa. Ví dụ về corpus như "tuyển tập truyện ngắn Vũ Trọng Phụng" hay "tuyển tập các bài hát nhạc vàng"
+
+**N-gram**    
+Là tần suất xuất hiện của n kí tự (hoặc từ) liên tiếp nhau có trong dữ liệu của corpus     
+- Với n = 1: unigram, và tính trên kí tự, ta có thông tin về tần suất xuất hiện nhiều nhất của các chữ cái.     
+- n = 2 : bigram.
