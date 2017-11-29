@@ -75,18 +75,21 @@ Viết đơn giản hơn ta có:
 
 $$ P(x_1x_2x_3....x_n) = P(x_1).\prod_{i=2}^n P(x_i|x_1x_2....x_{i-1})$$
 
-#####2.1 Mô hình Markov bậc 1
+#### 2.1 Mô hình Markov bậc 1
 Giả sử \\(x_i\\) chỉ phụ thuộc vào điều kiện của 1 đối tượng trước đó là \\(x_{i-1}\\) trong chuỗi. Nghĩa là:   
 
 $$P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) = P(X_i=x_i|X_{i-1}=x_{i-1}) \quad (1.2)$$
+
 Kết hợp (1.1) và (1.2) ta thu được:      
+
+$$P(X_1=x_1, X_2=x_2,..., X_n=x_n) = P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_{i-1}=x_{i-1}) $$
 
 Viết đơn giản hơn:   
 
 $$ P(x_1x_2...x_n)  = P(x_1)\prod_{i=2}^n P(x_i|x_{i-1}) $$
 
 
-##### 2.2 Mô hình Markov bậc k
+#### 2.2 Mô hình Markov bậc k
 Tương tự như mô hình bậc 1, lần này ta giả định rằng đối tượng thứ \\(i\\) phụ thuộc vào \\(k\\) đối tượng trước nó.   
 
 $$ P(x_1x_2...x_n)  = P(x_1)\prod_{i=2}^n P(x_i|x_{i-1}x_{i-2}...x_{i-k}) $$
