@@ -66,12 +66,12 @@ Ký hiệu đơn giản như sau \\(P(x_1x_2x_3....x_n)\\)
 Từ đó ta có công thức sau:     
 
 $$     
-P(X_1=x_1, X_2=x_2,..., X_n=x_n) \
-&=& P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... \
+P(X_1=x_1, X_2=x_2,..., X_n=x_n) = P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... \
 &=& P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) \quad (1.1) \
 $$
 
 Viết đơn giản hơn ta có:    
+
 $$ P(x_1x_2x_3....x_n) = P(x_1).\prod_{i=2}^n P(x_i|x_1x_2....x_{i-1})$$
 
 #####2.1 Mô hình Markov bậc 1
