@@ -56,19 +56,39 @@ Ví dụ: giả sử mình có 1 bộ từ điển như sau (trên thực tế b
  $$ V = \text{\{tôi, là, Tú, không, thích, hành, và, tỏi\}}$$
 
 ### 2. Markov Models
-Ý tưởng chính của mô hình Markov là giả định xác suất của đối tượng (câu, từ hoặc cụm từ đang nghiên cứu) chỉ phụ thuộc vào \\(k \(k \fe n- 1\)\\) đối tượng trước đó của một chuỗi.
+Ý tưởng chính của mô hình Markov là giả định xác suất của đối tượng (câu, từ hoặc cụm từ đang nghiên cứu) chỉ phụ thuộc vào \\(k \(k \leq n- 1\)\\) đối tượng trước đó của một chuỗi.
 
 Xét một chuỗi các biến ngẫu nhiên \\(X_1, X_2, ..., X_n\\). Mỗi biến ngẫu nhiên này có thể có các giá trị thuộc tập hữu hạn V. Mục tiêu của chúng ta là mô hình hoá xác suất của một chuỗi bất kỳ \\(x_1x_2...x_n\\), trong đó \\(n \ge 1\\) và \\(x_i \in V\\) sao cho \\(i=1,...,n\\) như sau:
 
-$$P(X_1=x_1, X_2=x_2,...,X_n=x_n)$$
+$$P(X_1=x_1, X_2=x_2,...,X_n=x_n)$$   
+Ký hiệu đơn giản như sau \\(P(x_1x_2x_3....x_n)\\)
+Ở đây chúng ta cần sự trợ giúp của 1 công cụ rất nổi tiếng trong thống kê **"chain rule" hay công thức Bayes**: \\(P(AB) = P(B|A) . P(A)\\)       
+Từ đó ta có công thức sau:     
 
-Ở đây chúng ta cần sự trợ giúp của 1 công cụ rất nổi tiếng **"chain rule" hay công thức Bayes**: \\(P(AB) = P(B|A) * P(A)\\)     
-Từ đó ta có công thức sau:
 $$     
-P(X_1=x_1, X_2=x_2,..., X_n=x_n)
-= P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) (1.1)
-= P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_{i-1}=x_{i-1}) (1.2)
+P(X_1=x_1, X_2=x_2,..., X_n=x_n) \
+&=& P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... \
+&=& P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) \quad (1.1) \
 $$
+
+Viết đơn giản hơn ta có:    
+$$ P(x_1x_2x_3....x_n) = P(x_1).\prod_{i=2}^n P(x_i|x_1x_2....x_{i-1})$$
+
+#####2.1 Mô hình Markov bậc 1
+Giả sử \\(x_i\\) chỉ phụ thuộc vào điều kiện của 1 đối tượng trước đó là \\(x_{i-1}\\) trong chuỗi. Nghĩa là:   
+
+$$P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) = P(X_i=x_i|X_{i-1}=x_{i-1}) \quad (1.2)$$
+Kết hợp (1.1) và (1.2) ta thu được:      
+
+Viết đơn giản hơn:   
+
+$$ P(x_1x_2...x_n)  = P(x_1)\prod_{i=2}^n P(x_i|x_{i-1}) $$
+
+
+##### 2.2 Mô hình Markov bậc k
+Tương tự như mô hình bậc 1, lần này ta giả định rằng đối tượng thứ \\(i\\) phụ thuộc vào \\(k\\) đối tượng trước nó.   
+
+$$ P(x_1x_2...x_n)  = P(x_1)\prod_{i=2}^n P(x_i|x_{i-1}x_{i-2}...x_{i-k}) $$
 
 
 ### 2.Mô hình ngôn ngữ N-gram     
