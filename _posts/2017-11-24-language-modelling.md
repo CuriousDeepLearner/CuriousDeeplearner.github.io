@@ -65,6 +65,17 @@ Ký hiệu đơn giản như sau \\(P(x_1x_2x_3....x_n)\\)
 Ở đây chúng ta cần sự trợ giúp của 1 công cụ rất nổi tiếng trong thống kê **"chain rule" hay công thức Bayes**: \\(P(AB) = P(B|A) . P(A)\\)       
 Từ đó ta có công thức sau:     
 
+\\[
+\begin{eqnarray}
+    P(X_1=x_1, X_2=x_2,..., X_n=x_n) =& P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... ~~~~ (1)\\\
+    \text{subject to:}~ & x + z = 600 ~~~~ (2)\\\
+                        & y + t = 400 ~~~~ (3) \\\
+                        & x + y \leq 800 ~~~(4) \\\
+                        & z + t \leq 700 ~~~ (5)\\\
+                        & x, y, z, t \geq 0 ~~~ (6)
+\end{eqnarray}
+\\]
+
 $$     
 P(X_1=x_1, X_2=x_2,..., X_n=x_n) \
 &=& P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... \
