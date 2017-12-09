@@ -38,7 +38,7 @@ Một câu bao gồm n từ có dạng \\(x_1x_2x_3...x_n\\)
 với \\( n \ge 1 \\), \\(x_i \in V \\) và \\(x_n = STOP \\) là 1 ký hiệu đặc biệt \\( STOP \not \in V \\)     
 Một mô hình gồm tập hữu hạn từ vựng \\(V\\) và 1 hàm xác suất \\(p(x_1, x_2,...x_n)\\) sao cho:     
 
-$$p(x_1,x_2,...,x_n) \ge  0 ~~ x_i \in V^+ , i = 1,2,...n$$ \        
+$$p(x_1,x_2,...,x_n) \ge  0 ~~ x_i \in V^+ , i = 1,2,...n$$          
 $$\sum_{<x_1...x_n> \in V^+} p(x_1,x_2,...,x_n) = 1$$
 
 Như vậy \\(p(x_1, x_2,...x_n)\\) là phân bố xác suất của các câu trong tập \\(V^+\\)
@@ -93,6 +93,7 @@ $$ P(x_1x_2...x_n)  = P(x_1)\prod_{i=2}^n P(x_i|x_{i-1}) $$
 Tương tự như mô hình bậc 1, lần này ta giả định rằng đối tượng thứ \\(i\\) phụ thuộc vào \\(k\\) đối tượng trước nó.   
 
 $$ P(x_1x_2...x_n)  = P(x_1)\prod_{i=2}^n P(x_i|x_{i-1}x_{i-2}...x_{i-k}) $$
+
 
 
 ### 2.Mô hình ngôn ngữ N-gram     
