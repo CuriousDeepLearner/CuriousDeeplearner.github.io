@@ -67,20 +67,11 @@ Từ đó ta có công thức sau:
 
 \\[
 \begin{eqnarray}
-    P(X_1=x_1, X_2=x_2,..., X_n=x_n) =& P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... ~~~~ (1)\\\
-    \text{subject to:}~ & x + z = 600 ~~~~ (2)\\\
-                        & y + t = 400 ~~~~ (3) \\\
-                        & x + y \leq 800 ~~~(4) \\\
-                        & z + t \leq 700 ~~~ (5)\\\
-                        & x, y, z, t \geq 0 ~~~ (6)
+    P(X_1=x_1, X_2=x_2,..., X_n=x_n) =& P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... ~~~~ \\\
+    =& P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) \quad (1.1)
 \end{eqnarray}
 \\]
 
-$$     
-P(X_1=x_1, X_2=x_2,..., X_n=x_n) \
-&=& P(X_1=x_1).P(X_2=x_2|X_1=x_1).P(X_3=x_3|X_1=x_1,X_2=x_2).... \
-&=& P(X_1=x_1)\prod_{i=2}^n P(X_i=x_i|X_1=x_1,...,X_{i-1}=x_{i-1}) \quad (1.1)
-$$
 
 Viết đơn giản hơn ta có:    
 
