@@ -51,7 +51,9 @@ from nltk import ngrams
 In one-hot encoding, each token is represented by a vector of length N, where N is the size of the vocabulary. The vocabulary is the total number of unique words in the document.
 
 > Consider the sentence: An apple a day keeps doctor away said the doctor
+
 ```python
+import numpy as np
 class Dictionary(object):
     def __init__(self):
         self.word2idx = {}
@@ -71,7 +73,13 @@ class Dictionary(object):
     def onehot_encoded(self, word):
 	vec = np.zeros(self.length)
 	vec[self.word2idx[word]] = 1
-	return vec 	
+	return vec
+
+dic = Dictionary()
+for tok in text.split():
+    dic.add_word(tok)
+
+dic.onehot_encoded('day') 	
 ```
 
 
