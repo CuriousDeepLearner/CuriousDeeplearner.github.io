@@ -9,10 +9,8 @@ sc_security: bf94eebb
 
 Thanks for visiting my blog.
 
-My Name is Thanh Tu NGUYEN, a student of Master 2 in Paris Dauphine University, Paris France.
-Through this blog, I will share my insights, posts, projects as well as useful expericences on Machine Learning.
-
-Please check out:[My linkedin](https://www.linkedin.com/in/thanh-tu-nguyen-1077a832/) or [github](https://github.com/thanhtu19392)
+This is a blog about deep learning. Through this blog, I will share all my insights, posts, projects as well as useful expericence on Deep learning. If you have any questions or remarks, I would very appreciate that you leave out your comments.
+Cheers!
 
 The creation of this blog is credited to [this awesome website](https://machinelearningcoban.com/)
 <!-- Place this tag in your head or just before your close body tag. -->

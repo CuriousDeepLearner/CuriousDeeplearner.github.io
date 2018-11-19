@@ -3,7 +3,7 @@ sass:
 
 permalink: /:year/:month/:day/:title.html
 
-url: https://thanhtu19392.github.io
+url: https://curiousdeeplearner.github.io
 baseurl: ""
 
 future: true
@@ -21,7 +21,7 @@ kramdown:
   syntax_highlighter: rouge
 
 # Disqus post comments
-disqus_shortname: thanhtu
+disqus_shortname: curiousdeeplearner
 
 # number of posts per page. Should be a number such that total pages >= 5. Well, this
 # is my choice, there is no specific reason for this.
