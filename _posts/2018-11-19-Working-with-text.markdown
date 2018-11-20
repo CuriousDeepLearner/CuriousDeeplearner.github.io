@@ -32,8 +32,8 @@ Text data can be broken down into one of these representations. Each smaller uni
 ### Understanding n-grams and bag-of-words
 Word n-grams are groups of n(or fewer) consecutive words that you can extract from a sentence. The same concept may also be applied to characters instead of words. 
 
-> Example: Consider the sentence "The cat sat on the mat" 
-> Set of 2-grams: {"The", "The cat", "cat", "cat sat", "sat", "sat on", "on", "on the", "the", "the mat", "mat"}
+> Example: Consider the sentence "The cat sat on the mat" \\
+> Set of 2-grams: {"The", "The cat", "cat", "cat sat", "sat", "sat on", "on", "on the", "the", "the mat", "mat"} \\
 > Set of 3-grams: {"The", "The cat", "The cat sat", "cat", "cat sat", "cat sat on", "sat", "sat on", "sat on the","on", "on the mat", "the", "the mat", "mat"}
 
 Such a set is called a bag-of-2-grams or bag-of-3-grams, respectively. The term bag here refers to the fact that you're dealing with a set of tokens rather than a list of sequence: the tokens have no specific order. This family of tokenization methods is called __bag-of-words__.
@@ -81,6 +81,56 @@ for tok in text.split():
 
 dic.onehot_encoded('day') 	
 ```
+
+One of the challenges with one-hot representation is that the data is too sparse, and the size of the vector quickly grows as the number of unique words in the vocabulary increases, which is considered to be a limitation, and hence it is rarely used with deep learning. 
+
+A variant of one-hot encoding is the so-called __one-hot hashing trick__, which you can use when the number of unique tokens in your vocabulary is too large to handle explicitly. Instead of explicitly assigning an index to each word and keeping a reference of these indices in a dictionary, you can hash words into vectors of fixed size. This is typically done with a very lightweight hashing function. The main advantage of this method is that it does away with maintaining an explicit word index, which saves memory and allows online encoding of the data. The one drawback of this appoach is that it's susceptible to hash collisions: two different words may end up with the same hash, and subsequently any machine learning model looking at these hashes won't be able to tell the difference between these words.
+
+#### Word embedding
+
+Whereas the vectors obtained through one-hot encoding are binary, sparse and very high-dimensional, word embeddings are low dimensional floating-point vectors(dense vectors as opposed to sparse vectors). Morever, unlike the word vectors obtained via one-hot encoding, word embeddings are learned from data via training. It's common to use a word embedding of dimension size 50, 100, 256 or 300. This dimension size is a __hyper-parameter__ that we need to play with during the training phase. 
+
+There are two ways to obtain word embeddings: 
+
+- Learn word embeddings jointly with the main task you care about. It means that you start with random word vectors and then learn word vectors in the same way you learn the weights of a neural network
+
+- Load into your model word embeddings that were precomputed using a different machine-learning task than the one you're trying to solve. These are called __pretrained word embeddings__
+
+##### Learning word embedding with the Embedding Layer
+
+One way to create a word embedding is to start with dense vector for each token containing random numbers, and then train a model such as a document classifier or sentiment classifier. The floating point numbers, which represent the tokens, will get adjusted in a way such that semantically closer words will have similar representations. For instance, in a reasonable embedding space, you would expect synonyms to be embedded into similar word vectors
+
+The __Embedding__ layer is best understood as a dictionary that maps integer indices (which stand for specific words) to dense vectors. It takes integers as input, it look up these integers in an internal dictionary, and it returns the associated vectors. It's effectively a dictionary lookup. 
+
+```python
+#pytorch 
+import torch.nn as nn
+
+word_to_ix = {'hello': 0, 'world': 1}
+
+embeds = nn.Embedding(2, 5) #2 words in vocab, 5: dimensional embeddings
+lookup_tensor = torch.tensor([word_to_ix['hello']], dtype= torch.long)
+hello_embed = embeds(lookup_tensor)
+print(hello_embed)
+##tensor([[ 0.6614,  0.2669,  0.0617,  0.6213, -0.4519]], grad_fn=<EmbeddingBackward>)
+
+#Keras
+from keras.layers import Embedding
+embedding_layer = Embedding(2, 5)
+```
+
+> When you instantiate an Embedding layer, its weights are initially random, just as with any other layer.
+
+##### Using Pretrained Word Embeddings
+when we have little data on which we cannot meaningfully train the embeddings, we can use embeddings, which are trained on different data corpuses such as Wikipedia, Google, News and Twitter tweets. That embeddings vectors is highly structured and exhibits useful properties-that captures generic aspects of language structure. The rationale behind using pretrained word embeddings in NLP is much the same as for using pretrained convnets in image classification in computer vision: We don't have enough data available to learn truly powerful features on our own, but we expect the features that we need to be fairly generic-that is, common visual features or semantic features. 
+
+There are various pretrained word embeddings available for download:
+1. GloVe (Global Vectors for Words Representation,[stanford](https://nlp.stanford.edu/projects/glove)): developed by Stanford researchers in 2014. 
+2. Word2vec (Google News vectors, [google](https://code.google.com/archive/p/word2vec)): developed by Google in 2013
+3. fasttext (wiki news, [fasttext](https://fasttext.cc/docs/en/english-vectors.html))
+4. CharNGram
+
+
 
 
 
