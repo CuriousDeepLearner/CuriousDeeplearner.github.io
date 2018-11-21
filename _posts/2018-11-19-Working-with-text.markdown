@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Deep Learning - Working with text"
-summary: "Introduction of text data. Text data can be seen as either a sequence of characters or a sequence of words"
+title: "Deep Learning - Working with text - Part 1: Introduction"
+summary: "Introduction of text data. Vectorization : One-hot encoding and Word Embedding. Embedding Layer "
 excerpt: "Working with text and sequence data - Part 1"
 date: 2018-11-19
 mathjax: true
@@ -263,6 +263,9 @@ epoch 9, valid loss is 0.005754364652633667 ,  valid accuracy is 62 %
 
 
 
+## Reference:
+1. Book - Deep learning with Pytorch . Vishnu Subramamian (Packt)
+2. Book - Deep learning with Python . Francois Chollet (Manning)
 
 
 
