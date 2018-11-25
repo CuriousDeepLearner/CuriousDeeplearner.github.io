@@ -30,6 +30,7 @@ Deep learning models, like any other machine learning model, do not understand t
 Text data can be broken down into one of these representations. Each smaller unit of text is called __token__, and the process of breaking text into tokens is called __tokenization__. Once we convert the text data into tokens, we then need to map each token to a vector. __One-hot Encoding__ and __Words Embedding__ are the two most popular approaches for mapping tokens to vectors.
 
 ### Understanding n-grams and bag-of-words
+
 Word n-grams are groups of n(or fewer) consecutive words that you can extract from a sentence. The same concept may also be applied to characters instead of words. 
 
 > Example: Consider the sentence "The cat sat on the mat" \\
@@ -122,7 +123,10 @@ embedding_layer = Embedding(2, 5)
 > When you instantiate an Embedding layer, its weights are initially random, just as with any other layer.
 
 ##### Using Pretrained Word Embeddings
-when we have little data on which we cannot meaningfully train the embeddings, we can use embeddings, which are trained on different data corpuses such as Wikipedia, Google, News and Twitter tweets. That embeddings vectors is highly structured and exhibits useful properties-that captures generic aspects of language structure. The rationale behind using pretrained word embeddings in NLP is much the same as for using pretrained convnets in image classification in computer vision: We don't have enough data available to learn truly powerful features on our own, but we expect the features that we need to be fairly generic-that is, common visual features or semantic features. 
+
+When we have little data on which we cannot meaningfully train the embeddings, we can use embeddings, which are trained on different data corpuses such as Wikipedia, Google, News and Twitter tweets. That embeddings vectors is highly structured and exhibits useful properties-that captures generic aspects of language structure. The rationale behind using pretrained word embeddings in NLP is much the same as for using pretrained convnets in image classification in computer vision: We don't have enough data available to learn truly powerful features on our own, but we expect the features that we need to be fairly generic-that is, common visual features or semantic features. 
+
+If we are trying to represent a vocabulary of size 20000 in one-hot representation then we will end up with 20000 x 20000 numbers, most of which will be zero. The same vocabulary can be represented in word embedding as __20000 x dimension/_size__ where the dimension/_size could be 10, 50, 300 ...
 
 There are various pretrained word embeddings available for download:
 1. GloVe (Global Vectors for Words Representation,[stanford](https://nlp.stanford.edu/projects/glove)): developed by Stanford researchers in 2014. 
@@ -131,6 +135,7 @@ There are various pretrained word embeddings available for download:
 4. CharNGram
 
 ### Implementation
+#### Pytorch
 First, we will implement embedding model with pretrained word embeddings in Pytorch
 ```python
 from torchtext import data, datasets
@@ -261,7 +266,136 @@ epoch 9, training loss is 0.004042150242328644 ,  training accuracy is 73 %
 epoch 9, valid loss is 0.005754364652633667 ,  valid accuracy is 62 %
 ```
 
+#### Keras 
 
+Another implementation of embedding vectors in Keras
+
+```python
+#download data
+!wget http://s3.amazonaws.com/text-datasets/aclImdb.zip
+!unzip aclImdb.zip & rm aclImdb.zip
+#download pretrained weights
+!wget http://nlp.stanford.edu/data/glove.6B.zip & unzip glove.6B.
+
+#Load the IMDB data for use with an Embedding Layer
+import os
+
+imdb_dir = 'aclImdb'
+train_dir = os.path.join(imdb_dir, 'train')
+labels = []
+texts = []
+
+for label_type in ['neg', 'pos']:
+  dir_name = os.path.join(train_dir, label_type)
+  for fname in os.listdir(dir_name):
+    if fname[-4:] == '.txt':
+      f = open(os.path.join(dir_name, fname))
+      texts.append(f.read())
+      f.close()
+      if label_type == 'neg':
+        labels.append(0)
+      else:
+        labels.append(1)
+
+#Tokenize the text
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+import numpy as np
+
+maxlen = 100 #cut off reviews after 100 words
+training_samples = 200 # trains on 200 samples
+validation_samples = 10000 #validates on 10000 samples
+max_words = 10000 #consider only the top 10000 words in the dataset
+
+tokenizer = Tokenizer(num_words = max_words)
+tokenizer.fit_on_texts(texts)
+sequences = tokenizer.texts_to_sequences(texts)
+word_index = tokenizer.word_index
+print('Found %s unique tokens. '% len(word_index))
+
+data = pad_sequences(sequences, maxlen = maxlen)
+labels = np.asarray(labels)
+print('Shape of data tensor:', data.shape)
+print('shape of label tensor:', labels.shape)
+
+indices = np.arange(data.shape[0])
+np.random.shuffle(indices)
+data = data[indices]
+labels = labels[indices]
+x_train = data[:training_samples]
+y_train = labels[:training_samples]
+x_val = data[training_samples: training_samples + validation_samples]
+y_val = labels[training_samples: training_samples + validation_samples]
+
+#create embeddings index
+glove_dir = 'glove.6B'
+
+embeddings_index = {}
+f= open(os.path.join(glove_dir, 'glove.6B.100d.txt'))
+for line in f:
+  values = line.split()
+  word = values[0]
+  coefs = np.asarray(values[1:], dtype = 'float32')
+  embeddings_index[word] = coefs
+
+f.close()
+print('Found %s word vectors.' % len(embeddings_index))
+
+# preparing the Glove word-embeddings matrix
+embedding_dim = 100
+embedding_matrix = np.zeros((max_words, embedding_dim))
+for word, i in word_index.items():
+  if i < max_words:
+    embedding_vector = embeddings_index.get(word)
+    if embedding_vector is not None:
+      embedding_matrix[i] = embedding_vector #words not found in the embedding index will be all zeros
+
+#defining a model
+from keras.models import Sequential
+from keras.layers import Embedding, Flatten, Dense
+
+model = Sequential()
+model.add(Embedding(max_words, embedding_dim, input_length = maxlen))
+model.add(Flatten())
+model.add(Dense(32, activation = 'relu'))
+model.add(Dense(1, activation = 'sigmoid'))
+model.summary()
+
+# load the Glove matrix weights into the Embedding layer
+model.layers[0].set_weights([embedding_matrix])
+# freeze the Embedding Layer
+model.layers[0].trainable = False
+
+model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['acc'])
+history = model.fit(x_train, y_train, epochs = 10, batch_size=32, validation_data=(x_val, y_val))
+model.save_weights('pre_trained_glove_model.h5')
+
+```
+Results: 
+
+```python
+Train on 200 samples, validate on 10000 samples
+Epoch 1/10
+200/200 [==============================] - 2s 8ms/step - loss: 0.9097 - acc: 0.4950 - val_loss: 0.7098 - val_acc: 0.5136
+Epoch 2/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.5515 - acc: 0.7300 - val_loss: 0.7011 - val_acc: 0.5378
+Epoch 3/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.3627 - acc: 0.9300 - val_loss: 0.7289 - val_acc: 0.5298
+Epoch 4/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.2172 - acc: 0.9800 - val_loss: 0.6935 - val_acc: 0.5746
+Epoch 5/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.1485 - acc: 1.0000 - val_loss: 0.6967 - val_acc: 0.5777
+Epoch 6/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.0974 - acc: 1.0000 - val_loss: 0.7046 - val_acc: 0.5798
+Epoch 7/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.0645 - acc: 1.0000 - val_loss: 0.7124 - val_acc: 0.5767
+Epoch 8/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.0482 - acc: 1.0000 - val_loss: 0.7200 - val_acc: 0.5812
+Epoch 9/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.0384 - acc: 1.0000 - val_loss: 0.7264 - val_acc: 0.5814
+Epoch 10/10
+200/200 [==============================] - 1s 3ms/step - loss: 0.0309 - acc: 1.0000 - val_loss: 0.7317 - val_acc: 0.5769
+```
 
 ## Reference:
 1. Book - Deep learning with Pytorch . Vishnu Subramamian (Packt)
