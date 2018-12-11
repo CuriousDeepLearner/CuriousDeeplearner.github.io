@@ -54,7 +54,6 @@ Next, we'll create the __tokenizers__. A tokenizer is used to turn a string cont
 spaCy has model for each language ("en" for English) which need to be loaded so we can access the tokenizer of each model.
 
 > Note: the models must first be downloaded using the following on the command line:
-
 > python -m spacy download en
 
 ```python
@@ -95,11 +94,17 @@ pretrain_embedding = TEXT.vocab.vectors
 The final step of preparing the data is to create the iterators.
 We also need to define a `torch.device`. This is used to tell TorchText to put the tensors on the GPU or not. We use the `torch.cuda.is_available()` function, which will return `True` if a `GPU` is detected on our computer. We pass this device to the iterator.
 
+When we get a batch of examples using an iterator we need to make sure that all of the question texts are padded to the same length, in training set as well as valid set. Luckily, TorchText iterators handle this for us!
+
+We use a __BucketIterator__ instead of the standard __Iterator__ as it creates batches in such a way that it minimizes the amount of padding in question text.
+
 ```python
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 train_iter, val_iter = data.BucketIterator.splits((train, valid), sort_key = lambda x: len(x.question_text), batch_size = (32, 256), device = device)
 test_iter = data.BucketIterator(test, 1, sort=False, shuffle=False, device = device)
 ``` 
+
+
 
 
 
