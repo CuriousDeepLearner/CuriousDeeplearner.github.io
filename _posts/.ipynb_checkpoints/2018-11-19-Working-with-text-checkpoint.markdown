@@ -21,8 +21,6 @@ Text is one of the commonly used sequential data types. Text data can be seen as
 
 Applying deep learning to text is a fast-growing field, and a lot of new techniques arrive every month. We will cover the fundamental components that power most of the modern-day deep learning applications.
 
-### Vectorization of text
-
 Deep learning models, like any other machine learning model, do not understand text, so we need to convert text into numerical representation. The process of converting text into numerical representation is called __vectorization__ and can be done in different ways,: 
 
 - Convert text into words and represent each word as a vector
